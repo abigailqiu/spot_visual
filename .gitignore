@@ -1,0 +1,11 @@
+data/raw/
+data/interim/
+data/processed/
+
+.venv/
+__pycache__/
+.ipynb_checkpoints/ 
+
+.DS_Store
+
+touchdesigner/Backup/
