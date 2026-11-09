@@ -1,5 +1,5 @@
 import pandas as pd
-from src.config import RAW_DIR, INTERIM_DIR
+from src.config import RAW_DIR, STREAMS_CSV
 
 def load_data() -> pd.DataFrame: 
     files = RAW_DIR.glob("*.json")
@@ -16,5 +16,4 @@ def load_data() -> pd.DataFrame:
 
 if __name__ == "__main__":
     streams = load_data()
-    path = INTERIM_DIR / "streams.csv"
-    streams.to_csv(path, index=False)
+    streams.to_csv(STREAMS_CSV, index=False)
