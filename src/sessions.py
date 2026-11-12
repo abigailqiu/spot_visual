@@ -13,8 +13,15 @@ def get_sessions():
     streams = streams.loc[streams["ms_played"] > MIN_PLAY_MS] 
 
     session_counts = streams.groupby("session_num")["session_num"].transform("size")  #doesn't matter which column you apply transform(size) on 
-    streams = streams.loc[session_counts >= 2]  
+    streams = streams.loc[(session_counts >= 2) & streams["spotify_track_uri"].notnull()]  
     return streams 
+
+def get_tracks():
+    streams = pd.read_csv(SESSIONS_CSV)
+    streams["label"] = streams["track_name"] + " - " + streams["artist_name"]
+    tracks = streams.drop_duplicates("spotify_track_uri").set_index("spotify_track_uri")["label"]
+    play_count = streams.groupby("spotify_track_uri").size()
+    return tracks, play_count
 
 if __name__ == "__main__":
     sessions = get_sessions()
