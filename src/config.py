@@ -12,3 +12,8 @@ SESSIONS_CSV = PROCESSED_DIR / "sessions.csv"
 
 MODEL_PATH = PROCESSED_DIR / "w2v.model"
 CLUSTERS_PATH = PROCESSED_DIR / "clusters.csv"
+
+EXPORT_PATH = ROOT / "touchdesigner" / "data" / "tracks.csv"
+SCALE_CONSTANT = 2
+UPPER_BOUND = 0.4
+LOWER_BOUND = 0.05
