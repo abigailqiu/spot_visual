@@ -18,8 +18,8 @@ def get_sessions():
 
 def get_tracks():
     streams = pd.read_csv(SESSIONS_CSV)
-    streams["label"] = streams["track_name"] + " - " + streams["artist_name"]
-    tracks = streams.drop_duplicates("spotify_track_uri").set_index("spotify_track_uri")["label"]
+    # streams["label"] = streams["track_name"] + " - " + streams["artist_name"]
+    tracks = streams.drop_duplicates("spotify_track_uri").set_index("spotify_track_uri").loc[:, ["track_name", "artist_name"]]
     play_count = streams.groupby("spotify_track_uri").size()
     return tracks, play_count
 
